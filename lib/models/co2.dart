@@ -13,61 +13,69 @@ CO2 backend Model attributes
     experience_id: int
     materiel_id: int
 * */
-class Co2 extends Equatable {
-  final int co2Id;
-  final String co2Lib;
-  final double value;
-  final String unity;
-  final DateTime measureDate;
-  final DateTime measureTime;
-  final DateTime creationDate;
-  final DateTime creationTime;
-  final int experienceId;
-  final int materielId;
+class Co2 {
+  int co2Id;
+  String co2Lib;
+  DateTime creationDate;
+  DateTime creationTime;
+  int experienceId;
+  int materielId;
+  DateTime measureDate;
+  DateTime measureTime;
+  String unity;
+  double value;
 
+  Co2({
+        this.co2Id,
+        this.co2Lib,
+        this.creationDate,
+        this.creationTime,
+        this.experienceId,
+        this.materielId,
+        this.measureDate,
+        this.measureTime,
+        this.unity,
+        this.value
+      });
 
-  const Co2({
-    this.co2Id,
-    this.co2Lib,
-    this.value,
-    this.unity,
-    this.measureDate,
-    this.measureTime,
-    this.creationDate,
-    this.creationTime,
-    this.experienceId,
-    this.materielId
-  });
-
-  @override
   List<Object> get props => [
     co2Id,
     co2Lib,
-    value,
-    unity,
-    measureDate,
-    measureTime,
     creationDate,
     creationTime,
     experienceId,
-    materielId
+    materielId,
+    measureDate,
+    measureTime,
+    unity,
+    value
   ];
 
-  // Mapping between JSON response object and our model Co2
-  static Co2 fromJson(dynamic json) {
-    return Co2(
-      co2Id :json['co2_id'] as int,
-      co2Lib :json['co2_lib'] as String,
-      value :json['value'] as double,
-      unity :json['unity'] as String,
-      measureDate : json['measure_date'] as DateTime,
-      measureTime :json['measure_time'] as DateTime,
-      creationDate :json['creation_date'] as DateTime,
-      creationTime:json['creation_time'] as DateTime,
-      experienceId :json['experience_id'] as int,
-      materielId:json['materiel_id'] as int
-    );
+  Co2.fromJson(Map<String, dynamic> json) {
+    co2Id = json['co2_id'] as int;
+    co2Lib = json['co2_lib'] as String;
+    creationDate = json['creation_date'] as DateTime;
+    creationTime = json['creation_time'] as DateTime;
+    experienceId = json['experience_id'] as int;
+    materielId = json['materiel_id'] as int;
+    measureDate = json['measure_date'] as DateTime;
+    measureTime = json['measure_time'] as DateTime;
+    unity = json['unity'] as String;
+    value = json['value'] as double;
   }
 
-
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['co2_id'] = this.co2Id;
+    data['co2_lib'] = this.co2Lib;
+    data['creation_date'] = this.creationDate;
+    data['creation_time'] = this.creationTime;
+    data['experience_id'] = this.experienceId;
+    data['materiel_id'] = this.materielId;
+    data['measure_date'] = this.measureDate;
+    data['measure_time'] = this.measureTime;
+    data['unity'] = this.unity;
+    data['value'] = this.value;
+    return data;
+  }
 }
