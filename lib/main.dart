@@ -10,12 +10,15 @@ import 'package:poc_fo/views/show_temperature.dart';
 
 import 'blocs/temperature/temperature_bloc.dart';
 import 'models/Temperature.dart';
-import 'models/Temperature.dart';
 import 'repositories/temperature/temperature_repository.dart';
 import 'utils/simple_observer_bloc.dart';
 import 'blocs/blocs.dart';
 
 
+import 'package:poc_fo/repositories/co2/co2_api_client.dart';
+import 'package:poc_fo/repositories/co2/co2_repository.dart';
+import 'package:meta/meta.dart';
+import 'dart:convert';
 void main() {
   Bloc.observer = SimpleBlocObserver();
 

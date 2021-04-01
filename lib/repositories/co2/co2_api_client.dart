@@ -23,6 +23,7 @@ class Co2ApiClient {
   // method to get co2 data list
   Future<List<Co2>> getCo2List() async {
     final response = await http.Client().get(Uri.parse("$baseUrl"));
+    print(response);
     if (response.statusCode != 200)
       throw new Exception('error getting co2 list data');
     return parseCo2s(response.body);
@@ -38,6 +39,7 @@ class Co2ApiClient {
     final jsonDecoded = json.decode(response);
     return Co2.fromJson(jsonDecoded);
   }
+
 
 
 
