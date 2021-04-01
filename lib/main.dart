@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:poc_fo/repositories/noise/noise_api_client.dart';
 import 'package:poc_fo/repositories/noise/noise_repository.dart';
 import 'package:http/http.dart' as http;
+import 'package:poc_fo/repositories/temperature/temperature_api_client.dart';
+import 'package:poc_fo/repositories/temperature/temperature_repository.dart';
+
+
 
 void main() {
   runApp(MyApp());
@@ -14,15 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -43,6 +39,11 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  final TemperatureRepository temperatuRepository = TemperatureRepository(
+    temperatureAPIClient: TemperatureApiClient(
+      httpClient: http.Client(),
+    ),
+  );
 
   final NoiseRespository noiseRepository = NoiseRespository(
     noiseApiClient: NoiseApiClient(
@@ -55,10 +56,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
+
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
@@ -77,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    print(widget.temperatuRepository.getTemperature());
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by

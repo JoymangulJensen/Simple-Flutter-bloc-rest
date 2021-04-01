@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
+import 'package:poc_fo/models/models.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 
+
+@immutable
 class Temperature extends Equatable {
 
   int temperatureId;
@@ -58,21 +61,23 @@ class Temperature extends Equatable {
   ];
 
 
-  Temperature.fromJson(Map<String, dynamic> json) {
-    dateMaxTemp = json['date_max_temp'];
-    dateMinTemp = json['date_min_temp'];
-    maxTemp = json['max_temp'];
-    maxTempLib = json['max_temp_lib'];
-    measureDate = json['measure_date'];
-    measureTime = json['measure_time'];
-    minTemp = json['min_temp'];
-    minTempLib = json['min_temp_lib'];
-    temperatureId = json['temperature_id'];
-    temperatureLib = json['temperature_lib'];
-    timeMaxTemp = json['time_max_temp'];
-    timeMinTemp = json['time_min_temp'];
-    unity = json['unity'];
-    value = json['value'];
+  factory Temperature.fromJson(Map<String, dynamic> json) {
+    return Temperature(
+        dateMaxTemp : json['date_max_temp'],
+        dateMinTemp: json['date_min_temp'],
+        maxTemp : json['max_temp'],
+        maxTempLib : json['max_temp_lib'],
+        measureDate : json['measure_date'],
+        measureTime : json['measure_time'],
+        minTemp : json['min_temp'],
+        minTempLib : json['min_temp_lib'],
+        temperatureId : json['temperature_id'],
+        temperatureLib : json['temperature_lib'],
+        timeMaxTemp : json['time_max_temp'],
+        timeMinTemp : json['time_min_temp'],
+        unity : json['unity'],
+        value : json['value']);
+
   }
 
   Map<String, dynamic> toJson() {
