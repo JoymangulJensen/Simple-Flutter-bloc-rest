@@ -1,83 +1,71 @@
-import 'package:flutter/cupertino.dart';
-import 'package:poc_fo/models/models.dart';
 import 'package:equatable/equatable.dart';
 
-
-
-@immutable
 class Temperature extends Equatable {
+  final int temperatureId;
+  final String dateMaxTemp;
+  final String dateMinTemp;
+  final double maxTemp;
+  final String maxTempLib;
+  final String measureDate;
+  final String measureTime;
+  final double minTemp;
+  final String minTempLib;
+  final String temperatureLib;
+  final String timeMaxTemp;
+  final String timeMinTemp;
+  final String unity;
+  final double value;
 
-  int temperatureId;
-  String dateMaxTemp;
-  String dateMinTemp;
-  double maxTemp;
-  String maxTempLib;
-  String measureDate;
-  String measureTime;
-  double minTemp;
-  String minTempLib;
-  String temperatureLib;
-  String timeMaxTemp;
-  String timeMinTemp;
-  String unity;
-  double value;
-
-  Temperature (
-      {
-        this.dateMaxTemp,
-        this.dateMinTemp,
-        this.maxTemp,
-        this.maxTempLib,
-        this.measureDate,
-        this.measureTime,
-        this.minTemp,
-        this.minTempLib,
-        this.temperatureId,
-        this.temperatureLib,
-        this.timeMaxTemp,
-        this.timeMinTemp,
-        this.unity,
-        this.value
-      }
-      );
+  Temperature(
+      {this.dateMaxTemp,
+      this.dateMinTemp,
+      this.maxTemp,
+      this.maxTempLib,
+      this.measureDate,
+      this.measureTime,
+      this.minTemp,
+      this.minTempLib,
+      this.temperatureId,
+      this.temperatureLib,
+      this.timeMaxTemp,
+      this.timeMinTemp,
+      this.unity,
+      this.value});
 
   @override
-  // TODO: implement props
   List<Object> get props => [
-    temperatureId,
-    dateMaxTemp,
-    dateMinTemp,
-    maxTemp,
-    maxTempLib,
-    measureDate,
-    measureTime,
-    minTemp,
-    minTempLib,
-    temperatureLib,
-    timeMaxTemp,
-    timeMinTemp,
-    unity,
-    value,
-  ];
-
+        temperatureId,
+        dateMaxTemp,
+        dateMinTemp,
+        maxTemp,
+        maxTempLib,
+        measureDate,
+        measureTime,
+        minTemp,
+        minTempLib,
+        temperatureLib,
+        timeMaxTemp,
+        timeMinTemp,
+        unity,
+        value,
+      ];
 
   factory Temperature.fromJson(Map<String, dynamic> json) {
     return Temperature(
-        dateMaxTemp : json['date_max_temp'],
+        dateMaxTemp: json['date_max_temp'],
         dateMinTemp: json['date_min_temp'],
-        maxTemp : json['max_temp'],
-        maxTempLib : json['max_temp_lib'],
-        measureDate : json['measure_date'],
-        measureTime : json['measure_time'],
-        minTemp : json['min_temp'],
-        minTempLib : json['min_temp_lib'],
-        temperatureId : json['temperature_id'],
-        temperatureLib : json['temperature_lib'],
-        timeMaxTemp : json['time_max_temp'],
-        timeMinTemp : json['time_min_temp'],
-        unity : json['unity'],
-        value : json['value']);
-
+        maxTemp: json['max_temp'],
+        maxTempLib: json['max_temp_lib'],
+        measureDate: json['measure_date'],
+        measureTime: json['measure_time'],
+        minTemp: json['min_temp'],
+        minTempLib: json['min_temp_lib'],
+        temperatureId: json['temperature_id'],
+        temperatureLib: json['temperature_lib'],
+        timeMaxTemp: json['time_max_temp'],
+        timeMinTemp: json['time_min_temp'],
+        unity: json['unity'],
+        value: json['value']);
   }
 
   Map<String, dynamic> toJson() {
