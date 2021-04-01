@@ -21,6 +21,11 @@ class PatientApiClient {
     return parsePatient(response.body);
   }
 
+  Patient parsePatient(final response) {
+    final jsonDecoded = json.decode(response);
+    return Patient.fromJson(jsonDecoded);
+  }
+
   Future<List<Patient>> getPatientsList() async {
     final response = await http.Client().get(Uri.parse("$_baseUrl"));
     if (response.statusCode != 200)
@@ -32,10 +37,5 @@ class PatientApiClient {
     final jsonDecoded = jsonDecode(responseBody);
     final parsed = jsonDecoded.cast<Map<String, dynamic>>();
     return parsed.map<Patient>((json) => Patient.fromJson(json)).toList();
-  }
-
-  Patient parsePatient(final response) {
-    final jsonDecoded = json.decode(response);
-    return Patient.fromJson(jsonDecoded);
   }
 }

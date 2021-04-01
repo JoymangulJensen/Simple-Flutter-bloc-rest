@@ -11,12 +11,14 @@ class Patient extends Equatable {
   int trcrId;
   int trcId;
   String updatedAt;
+  List<Experience> experiences;
 
   Patient(
       {this.id,
       this.name,
       this.surname,
       this.birthday,
+      this.experiences,
       this.lmdId,
       this.trcrId,
       this.trcId,
@@ -25,14 +27,21 @@ class Patient extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object> get props => [id, name, surname, address];
+  List<Object> get props => [id];
 
   factory Patient.fromJson(Map<String, dynamic> json) {
+    List<Experience> ex = [];
+    if (json['experiences'] != null) {
+      json['experiences'].forEach((v) {
+        ex.add(new Experience.fromJson(v));
+      });
+    }
     return Patient(
         id: json['trc_patient_id'],
         name: json['name'],
         surname: json['surname'],
         birthday: json['birthday'],
+        experiences: ex,
         lmdId: json['lmd_patient_id'],
         trcrId: json['trc_rendered_traitement_id'],
         trcId: json['trc_traitement_id'],
@@ -51,6 +60,10 @@ class Patient extends Equatable {
     data['trc_rendered_traitement_id'] = this.trcrId;
     data['trc_traitement_id'] = this.trcId;
     data['updated_at'] = this.updatedAt;
+    if (this.experiences != null) {
+      data['experiences'] = this.experiences.map((v) => v.toJson()).toList();
+    }
+
     return data;
   }
 }
