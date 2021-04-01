@@ -53,7 +53,7 @@ class Co2 extends Equatable {
     materielId
   ];
 
-  // Mapping between JSON reponse object and our model Co2
+  // Mapping between JSON response object and our model Co2
   static Co2 fromJson(dynamic json) {
     return Co2(
       co2Id :json['co2_id'] as int,
