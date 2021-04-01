@@ -16,12 +16,12 @@ CO2 backend Model attributes
 class Co2 {
   int co2Id;
   String co2Lib;
-  DateTime creationDate;
-  DateTime creationTime;
+  String creationDate;
+  String creationTime;
   int experienceId;
   int materielId;
-  DateTime measureDate;
-  DateTime measureTime;
+  String measureDate;
+  String measureTime;
   String unity;
   double value;
 
@@ -54,12 +54,12 @@ class Co2 {
   Co2.fromJson(Map<String, dynamic> json) {
     co2Id = json['co2_id'] as int;
     co2Lib = json['co2_lib'] as String;
-    creationDate = json['creation_date'] as DateTime;
-    creationTime = json['creation_time'] as DateTime;
+    creationDate = json['creation_date'] as String;
+    creationTime = json['creation_time'] as String;
     experienceId = json['experience_id'] as int;
     materielId = json['materiel_id'] as int;
-    measureDate = json['measure_date'] as DateTime;
-    measureTime = json['measure_time'] as DateTime;
+    measureDate = json['measure_date'] as String;
+    measureTime = json['measure_time'] as String;
     unity = json['unity'] as String;
     value = json['value'] as double;
   }
