@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:poc_fo/repositories/noise/noise_api_client.dart';
-import 'package:poc_fo/repositories/noise/noise_repository.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:poc_fo/repositories/repositories.dart';
+import 'package:poc_fo/repositories/noise/noise_api_client.dart';
+import 'package:poc_fo/repositories/noise/noise_repository.dart';
+
 import 'package:poc_fo/repositories/temperature/temperature_api_client.dart';
 import 'package:poc_fo/repositories/temperature/temperature_repository.dart';
+
 import 'package:poc_fo/views/show_temperature.dart';
 
 
@@ -13,13 +17,11 @@ import 'models/Temperature.dart';
 import 'utils/simple_observer_bloc.dart';
 import 'blocs/blocs.dart';
 
-
 import 'package:poc_fo/repositories/co2/co2_api_client.dart';
 import 'package:poc_fo/repositories/co2/co2_repository.dart';
 import 'package:poc_fo/models/models.dart';
 import 'package:meta/meta.dart';
 import 'dart:async';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:poc_fo/blocs/blocs.dart';
@@ -70,7 +72,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocProvider(
-          create: (context) => Co2Bloc(co2Repository: repository),
           child: ShowPatient()),
     );
         title: 'POC DEMO',
