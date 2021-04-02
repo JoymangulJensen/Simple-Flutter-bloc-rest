@@ -16,7 +16,10 @@ class Co2Repository {
   }
 
   Future<List<Co2>> GetCo2List() async {
-    //print(co2apiClient.getCo2List());
+    // List<Co2> co2list = await co2apiClient.getCo2List();
+    /*co2list.forEach((element) {
+      print(element.toJson());
+    });*/
     return await co2apiClient.getCo2List();
   }
 

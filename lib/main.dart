@@ -17,7 +17,10 @@ import 'blocs/blocs.dart';
 
 import 'package:poc_fo/repositories/co2/co2_api_client.dart';
 import 'package:poc_fo/repositories/co2/co2_repository.dart';
+import 'package:poc_fo/models/models.dart';
 import 'package:meta/meta.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 void main() {
   Bloc.observer = SimpleBlocObserver();
