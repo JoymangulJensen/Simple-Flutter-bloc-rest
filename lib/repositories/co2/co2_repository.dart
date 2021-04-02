@@ -10,12 +10,13 @@ class Co2Repository {
       : assert(co2apiClient != null);
 
   Future<Co2> GetOneCo2({@required int id}) async {
-    Co2 co2 = await co2apiClient.getCo2ById(id);
-    // print(res.toJson());
-    return co2;
+    //Co2 co2 = await co2apiClient.getCo2ById(id);
+    //print(co2.toJson());
+    return await co2apiClient.getCo2ById(id);
   }
 
   Future<List<Co2>> GetCo2List() async {
+    //print(co2apiClient.getCo2List());
     return await co2apiClient.getCo2List();
   }
 
