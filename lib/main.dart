@@ -25,6 +25,10 @@ import 'package:http/http.dart' as http;
 import 'package:poc_fo/blocs/blocs.dart';
 import 'package:poc_fo/repositories/repositories.dart';
 import 'package:poc_fo/views/display_co2.dart';
+import 'package:poc_fo/repositories/noise/noise_api_client.dart';
+import 'package:poc_fo/repositories/noise/noise_repository.dart';
+import 'package:http/http.dart' as http;
+
 import 'utils/bloc_observer.dart';
 void main() {
   Bloc.observer = SimpleBlocObserver();
