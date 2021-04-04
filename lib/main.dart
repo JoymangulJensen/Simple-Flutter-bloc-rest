@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:poc_fo/repositories/noise/noise_api_client.dart';
+import 'package:poc_fo/repositories/noise/noise_repository.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MyApp());
@@ -41,6 +44,12 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+  final NoiseRespository noiseRepository = NoiseRespository(
+    noiseApiClient: NoiseApiClient(
+      httpClient: http.Client(),
+    ),
+  );
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -61,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    widget.noiseRepository.getNoise(1);
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
