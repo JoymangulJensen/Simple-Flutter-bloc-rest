@@ -1,17 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 class Patient extends Equatable {
-  String birthday;
-  String address;
-  String createdAt;
-  int lmdId;
-  String name;
-  String surname;
-  int id;
-  int trcrId;
-  int trcId;
-  String updatedAt;
-  List<Experience> experiences;
+  final String birthday, address, createdAt, name, surname, updatedAt;
+  final int lmdId, id, trcrId, trcId;
+  final List<Experience> experiences;
 
   Patient(
       {this.id,

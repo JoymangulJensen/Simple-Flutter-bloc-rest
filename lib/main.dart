@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:poc_fo/blocs/blocs.dart';
 import 'package:poc_fo/repositories/repositories.dart';
+import 'package:poc_fo/views/show_patient.dart';
 import 'package:poc_fo/repositories/noise/noise_api_client.dart';
 import 'package:poc_fo/repositories/noise/noise_repository.dart';
 
@@ -74,8 +75,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocProvider(
+          create: (context) => PatientBloc(repository: repository),
+          child: ShowPatient()),
           child: ShowPatient()),
     );
+  }
+}
+
         title: 'POC DEMO',
         theme: ThemeData(
           primarySwatch: Colors.blue,
