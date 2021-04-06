@@ -18,6 +18,7 @@ class Patient extends Equatable {
       this.name,
       this.surname,
       this.birthday,
+      this.address,
       this.experiences,
       this.lmdId,
       this.trcrId,

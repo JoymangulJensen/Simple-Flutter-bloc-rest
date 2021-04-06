@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:poc_fo/blocs/blocs.dart';
 import 'package:poc_fo/repositories/repositories.dart';
 import 'package:poc_fo/repositories/noise/noise_api_client.dart';
 import 'package:poc_fo/repositories/noise/noise_repository.dart';
@@ -32,16 +34,16 @@ import 'package:poc_fo/repositories/noise/noise_repository.dart';
 import 'package:http/http.dart' as http;
 
 import 'utils/bloc_observer.dart';
-void main() {
-  Bloc.observer = SimpleBlocObserver();
+import 'bloc_observer.dart';
 
-  final TemperatureRepository temperatureRepository = TemperatureRepository(
-    temperatureAPIClient: TemperatureApiClient(
+void main() {
+  Bloc.observer = MyBlocObserver();
+  final PatientRepository patientRepository = PatientRepository(
+    patientApiClient: PatientApiClient(
       httpClient: http.Client(),
     ),
   );
-
-  runApp(MyApp(temperatureRepository: temperatureRepository));
+  runApp(MyApp(repository: patientRepository));
 }
 class MyApp extends StatelessWidget {
 
