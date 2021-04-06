@@ -8,9 +8,39 @@ import 'package:poc_fo/repositories/repositories.dart';
 import 'package:poc_fo/views/show_patient.dart';
 import 'package:poc_fo/repositories/noise/noise_api_client.dart';
 import 'package:poc_fo/repositories/noise/noise_repository.dart';
+void main() {
+  Bloc.observer = HuBlocObserver();
+  final HumidityRepository humidityRepository = HumidityRepository(
+    humidityapiClient: HumidityApiClient(
+      httpClient: http.Client(),
+    ),
+  );
+  runApp(MyApp(humidityRepository: humidityRepository));
+}
 
 import 'package:poc_fo/repositories/temperature/temperature_api_client.dart';
 import 'package:poc_fo/repositories/temperature/temperature_repository.dart';
+
+class MyApp extends StatelessWidget {
+  final HumidityRepository humidityRepository;
+  MyApp({Key key, @required this.humidityRepository})
+    : assert(humidityRepository != null),
+    super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(primarySwatch: Colors.blue,
+      ),
+      home: BlocProvider(
+        create: (context)=>
+        HumidityBloc(humidityRepository: humidityRepository),
+        
+      ),
+    );
+  }
+}
 
 import 'package:poc_fo/views/show_temperature.dart';
 
