@@ -1,4 +1,9 @@
-class humidity {
+import 'package:flutter/cupertino.dart';
+import 'package:poc_fo/models/models.dart';
+import 'package:equatable/equatable.dart';
+
+@immutable
+class Humidity extends Equatable{
   String creationDate;
   String creationTime;
   int experienceId;
@@ -10,7 +15,7 @@ class humidity {
   String unity;
   int value;
 
-  humidity(
+  Humidity(
       {this.creationDate,
         this.creationTime,
         this.experienceId,
@@ -22,31 +27,53 @@ class humidity {
         this.unity,
         this.value});
 
-  humidity.fromJson(Map<String, dynamic> json) {
-    creationDate = json['creation_date'];
-    creationTime = json['creation_time'];
-    experienceId = json['experience_id'];
-    humidityId = json['humidity_id'];
-    humidityLib = json['humidity_lib'];
-    materielId = json['materiel_id'];
-    measureDate = json['measure_date'];
-    measureTime = json['measure_time'];
-    unity = json['unity'];
-    value = json['value'];
+  @override
+  List<Object> get props => [
+    creationDate,
+    creationTime,
+    experienceId,
+    humidityId,
+    humidityLib,
+    materielId,
+    measureDate,
+    measureTime,
+    unity,
+    value
+  ];
+
+
+
+  factory Humidity.fromJson(Map<String, dynamic> json) {
+    return Humidity(
+        creationDate : json['creationDate'],
+        creationTime: json['creationTime'],
+        experienceId : json['experienceId'],
+        humidityId : json['humidityId'],
+        humidityLib : json['humidityLib'],
+        materielId : json['materielId'],
+        measureDate : json['measureDate'],
+        measureTime : json['measureTime'],
+        unity : json['unity'],
+        value : json['value']);
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['creation_date'] = this.creationDate;
-    data['creation_time'] = this.creationTime;
-    data['experience_id'] = this.experienceId;
-    data['humidity_id'] = this.humidityId;
-    data['humidity_lib'] = this.humidityLib;
-    data['materiel_id'] = this.materielId;
-    data['measure_date'] = this.measureDate;
-    data['measure_time'] = this.measureTime;
-    data['unity'] = this.unity;
-    data['value'] = this.value;
+    data['creationDate']=this.creationDate;
+    data['creationTime']=this.creationTime;
+    data['experienceId']=this.experienceId;
+    data['humidityId']=this.humidityId;
+    data['humidityLib']=this.humidityLib;
+    data['materielId']=this.materielId;
+    data['measureDate']=this.measureDate;
+    data['measureTime']=this.measureTime;
+    data['unity']=this.unity;
+    data['value']= this.value;
     return data;
   }
+
+
 }
+
+
+
