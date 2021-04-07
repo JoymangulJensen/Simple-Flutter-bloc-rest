@@ -19,11 +19,10 @@ class TemperatureBloc extends Bloc<TemperatureEvent, TemperatureState> {
     if (event is TemperatureRequested) {
       yield TemperatureLoadInProgress();
       try {
-        final Temperature temperature = await temperatureRepository
-            .getTemperature();
+        final Temperature temperature = await temperatureRepository.fetchTemperature(id:event.id);
         yield TemperatureLoadSuccess(temperature: temperature);
       } catch (_) {
-        yield WeatherLoadFailure();
+        yield TemperatureLoadFailure();
       }
     }
   }

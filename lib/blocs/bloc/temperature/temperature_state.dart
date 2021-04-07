@@ -23,4 +23,4 @@ class TemperatureLoadSuccess extends TemperatureState {
   List<Object> get props => [temperature];
 }
 
-class WeatherLoadFailure extends TemperatureState {}
+class TemperatureLoadFailure extends TemperatureState {}
