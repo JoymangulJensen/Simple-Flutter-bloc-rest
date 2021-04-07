@@ -9,10 +9,10 @@ class HumidityRepository {
   HumidityRepository({@required this.humidityapiClient})
       : assert(humidityapiClient != null);
 
-  Future<Humidity> GetOneHumidity({@required int id}) async {
-    Humidity humidity = await humidityapiClient.getHumidityById(id);
-    print(" humidity libelle: "+ humidity.humidityLib);
-    return humidity;
+  Future<Humidity> GetOneHumidity({@required int humidityId}) async {
+    return await humidityapiClient.getHumidityById(humidityId);
+   // print(" humidity libelle: "+ humidity.humidityLib);
+    //return humidity;
   }
 
   Future<List<Humidity>> GetHumidityList() async {

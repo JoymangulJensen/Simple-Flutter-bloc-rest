@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:poc_fo/views/views.dart';
 
 import 'package:poc_fo/blocs/blocs.dart';
 import 'package:poc_fo/repositories/repositories.dart';
@@ -21,7 +22,7 @@ void main() {
 import 'package:poc_fo/repositories/temperature/temperature_api_client.dart';
 import 'package:poc_fo/repositories/temperature/temperature_repository.dart';
 
-class MyApp extends StatelessWidget {
+ class MyApp extends StatelessWidget {
   final HumidityRepository humidityRepository;
   MyApp({Key key, @required this.humidityRepository})
     : assert(humidityRepository != null),
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    humidityRepository.GetOneHumidity(humidityId:3);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue,
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
       home: BlocProvider(
         create: (context)=>
         HumidityBloc(humidityRepository: humidityRepository),
-        
+        child: HumidityView(),
       ),
     );
   }

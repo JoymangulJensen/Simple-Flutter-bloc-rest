@@ -4,16 +4,16 @@ import 'package:equatable/equatable.dart';
 
 @immutable
 class Humidity extends Equatable{
-  String creationDate;
-  String creationTime;
-  int experienceId;
-  int humidityId;
-  String humidityLib;
-  int materielId;
-  String measureDate;
-  String measureTime;
-  String unity;
-  int value;
+ final String creationDate;
+ final String creationTime;
+ final int experienceId;
+ final int humidityId;
+ final String humidityLib;
+ final int materielId;
+ final String measureDate;
+ final  String measureTime;
+ final String unity;
+ final double value;
 
   Humidity(
       {this.creationDate,
@@ -45,33 +45,37 @@ class Humidity extends Equatable{
 
   factory Humidity.fromJson(Map<String, dynamic> json) {
     return Humidity(
-        creationDate : json['creationDate'],
-        creationTime: json['creationTime'],
-        experienceId : json['experienceId'],
-        humidityId : json['humidityId'],
-        humidityLib : json['humidityLib'],
-        materielId : json['materielId'],
-        measureDate : json['measureDate'],
-        measureTime : json['measureTime'],
+        creationDate : json['creation_date'],
+        creationTime: json['creation_time'],
+        experienceId : json['experience_id'],
+        humidityId : json['humidity_id'],
+        humidityLib : json['humidity_lib'],
+        materielId : json['materiel_id'],
+        measureDate : json['measure_date'],
+        measureTime : json['measure_time'],
         unity : json['unity'],
         value : json['value']);
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['creationDate']=this.creationDate;
-    data['creationTime']=this.creationTime;
-    data['experienceId']=this.experienceId;
-    data['humidityId']=this.humidityId;
-    data['humidityLib']=this.humidityLib;
-    data['materielId']=this.materielId;
-    data['measureDate']=this.measureDate;
-    data['measureTime']=this.measureTime;
+    data['creation_date']=this.creationDate;
+    data['creation_time']=this.creationTime;
+    data['experience_id']=this.experienceId;
+    data['humidity_id']=this.humidityId;
+    data['humidity_lib']=this.humidityLib;
+    data['materiel_id']=this.materielId;
+    data['measure_date']=this.measureDate;
+    data['measure_time']=this.measureTime;
     data['unity']=this.unity;
     data['value']= this.value;
     return data;
   }
-
+  @override
+  String toString() {
+    return 'Humidity{creationDate: $creationDate, creationTime:$creationTime,experienceId: $experienceId, humidityId:$humidityId, '
+        'humidityLib: $humidityLib,materielId: $materielId, measureDate:$measureDate, measureTime:$measureTime, unity: $unity, value:$value }';
+  }
 
 }
 

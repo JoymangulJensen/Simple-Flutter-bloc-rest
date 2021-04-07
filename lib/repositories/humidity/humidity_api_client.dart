@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class HumidityApiClient {
-  static const baseUrl = 'http://192.168.1.117:5000/humidity';
+  static const baseUrl = 'http://10.0.2.2:5000/humidity';
   final http.Client httpClient;
 
   HumidityApiClient({
@@ -14,10 +14,18 @@ class HumidityApiClient {
 
 
   Future<Humidity> getHumidityById(int humidityId) async {
+
     final response = await http.Client().get(Uri.parse("$baseUrl/$humidityId"));
     if (response.statusCode != 200)
       throw new Exception('error getting Humidity data for id $humidityId');
+    print(response.body);
     return parseHumidities(response.body);
+  }
+
+
+  Humidity parseHumidities(final response) {
+    final jsonDecoded = json.decode(response);
+    return Humidity.fromJson(jsonDecoded);
   }
 
   //Future<List<Humidity>> GetHumidityListt() async {
@@ -26,7 +34,7 @@ class HumidityApiClient {
      // print(element.toJson());
    // });
    // return humiditylist;
-  //}
+  //}++
 
   //headers: keep-Alive
   Future<List<Humidity>> getHumidityList() async {
@@ -53,10 +61,7 @@ class HumidityApiClient {
     return parsed.map<Humidity>((json) => Humidity.fromJson(json)).toList();
   }
 
-  Humidity parseHumidities(final response) {
-    final jsonDecoded = json.decode(response);
-    return Humidity.fromJson(jsonDecoded);
-  }
+
 
 
 
