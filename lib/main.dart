@@ -36,6 +36,7 @@ import 'package:http/http.dart' as http;
 
 import 'utils/bloc_observer.dart';
 import 'bloc_observer.dart';
+import 'utils/bloc_observer.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
