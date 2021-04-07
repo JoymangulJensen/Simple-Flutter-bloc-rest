@@ -10,9 +10,10 @@ class TemperatureRepository {
   TemperatureRepository({@required this.temperatureAPIClient})
       : assert(temperatureAPIClient != null);
 
-  Future<Temperature> getTemperature() async {
-    Temperature res = await temperatureAPIClient.getData();
-    print(res.toJson());
-    return res;
+  Future<Temperature> fetchTemperature({@required int id}) async {
+   // Temperature temp =
+   // print(temp.toJson());
+    return await temperatureAPIClient.getTemperature(id);;
   }
-}
+  }
+
