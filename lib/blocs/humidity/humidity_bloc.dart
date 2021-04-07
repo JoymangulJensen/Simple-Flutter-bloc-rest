@@ -19,7 +19,7 @@ class HumidityBloc extends Bloc<HumidityEvent, HumidityState>{
     if(event is HumidityFetched){
       yield HumidityLoadInProgress();
        try{
-         final Humidity humidity = await humidityRepository.GetOneHumidity(id: event.humidityId);
+         final Humidity humidity = await humidityRepository.GetOneHumidity(humidityId: event.humidityId);
          yield HumidityLoadSuccess(humidity : humidity);
        } catch(_){
          yield HumdidityFailure();
