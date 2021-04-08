@@ -10,7 +10,6 @@ import 'package:poc_fo/views/show_temperature.dart';
 
 import 'blocs/temperature/temperature_bloc.dart';
 import 'models/Temperature.dart';
-import 'repositories/temperature/temperature_repository.dart';
 import 'utils/simple_observer_bloc.dart';
 import 'blocs/blocs.dart';
 
@@ -59,6 +58,9 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
+      home: BlocProvider(
+          create: (context) => Co2Bloc(co2Repository: repository),
+          child: ShowPatient()),
     );
   }
 }
