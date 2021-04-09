@@ -8,13 +8,12 @@ import 'package:poc_fo/repositories/temperature/temperature_repository.dart';
 import 'package:poc_fo/views/show_temperature.dart';
 
 
-import 'blocs/bloc/temperature/temperature_event.dart';
+import 'blocs/temperature/temperature_bloc.dart';
 import 'models/Temperature.dart';
 import 'models/Temperature.dart';
 import 'repositories/temperature/temperature_repository.dart';
-import 'blocs/bloc/temperature/temperature_bloc.dart';
-import 'blocs/bloc/temperature/temperature_state.dart';
 import 'utils/simple_observer_bloc.dart';
+import 'blocs/blocs.dart';
 
 
 void main() {
@@ -42,11 +41,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: BlocProvider(
-        create: (context) =>
-            TemperatureBloc(temperatureRepository: temperatureRepository),
-        child: MyHomePage(),
-      ),
+        home: MultiBlocProvider(providers: [
+          BlocProvider<TemperatureBloc>(
+            create: (context) => TemperatureBloc(temperatureRepository: temperatureRepository),
+          )
+        ], child: ShowTemperature()
+          ),
+
 
       theme: ThemeData(
 

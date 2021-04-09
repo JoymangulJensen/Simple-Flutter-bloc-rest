@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:poc_fo/blocs/bloc/temperature/temperature_bloc.dart';
-import 'package:poc_fo/blocs/bloc/temperature/temperature_event.dart';
-import 'package:poc_fo/blocs/bloc/temperature/temperature_state.dart';
+import 'package:poc_fo/blocs/temperature/temperature_bloc.dart';
+import 'package:poc_fo/blocs/temperature/temperature_event.dart';
+import 'package:poc_fo/blocs/temperature/temperature_state.dart';
+import '../blocs/blocs.dart';
 
 
-class MyHomePage extends StatelessWidget {
+class ShowTemperature extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
