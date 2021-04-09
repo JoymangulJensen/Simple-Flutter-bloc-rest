@@ -63,34 +63,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-        home: MultiBlocProvider(providers: [
-          BlocProvider<TemperatureBloc>(
-            create: (context) => TemperatureBloc(temperatureRepository: temperatureRepository),
-          )
-        ], child: ShowTemperature()
-          ),
-
-
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider(
-          create: (context) => PatientBloc(repository: repository),
-          child: ShowPatient()),
-          child: ShowPatient()),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => PatientBloc(repository: repository),
+          ),
+           BlocProvider<Co2Bloc>(
+            create: (context) => Co2Bloc(co2Repository: repository),
+          ),
+           BlocProvider<TemperatureBloc>(
+            create: (context) => TemperatureBloc(temperatureRepository: temperatureRepository),
+          )
+        ],
+        child: ShowPatient(),
+      ),
     );
   }
 }
-
-        title: 'POC DEMO',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: MultiBlocProvider(providers: [
-          BlocProvider<Co2Bloc>(
-            create: (context) => Co2Bloc(co2Repository: repository),
-          )
-        ], child: ShowPatient()));
+// child: ShowPatient()));
   }
 }
