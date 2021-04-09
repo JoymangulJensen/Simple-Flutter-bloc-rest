@@ -18,7 +18,7 @@ class HumidityApiClient {
     final response = await http.Client().get(Uri.parse("$baseUrl/$humidityId"));
     if (response.statusCode != 200)
       throw new Exception('error getting Humidity data for id $humidityId');
-    print(response.body);
+    //print(response.body);
     return parseHumidities(response.body);
   }
 

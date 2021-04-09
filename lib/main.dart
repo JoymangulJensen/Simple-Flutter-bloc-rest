@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'utils/bloc_observer.dart';
+import 'package:poc_fo/blocs/blocs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:poc_fo/views/views.dart';
 
