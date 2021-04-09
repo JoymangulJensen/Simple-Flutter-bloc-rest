@@ -14,7 +14,7 @@ import 'models/Temperature.dart';
 import 'repositories/temperature/temperature_repository.dart';
 import 'blocs/bloc/temperature/temperature_bloc.dart';
 import 'blocs/bloc/temperature/temperature_state.dart';
-import 'blocs/simple_observer_bloc.dart';
+import 'utils/simple_observer_bloc.dart';
 
 
 void main() {
