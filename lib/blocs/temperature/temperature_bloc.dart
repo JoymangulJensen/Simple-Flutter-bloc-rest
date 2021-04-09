@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:poc_fo/blocs/bloc/temperature/temperature_event.dart';
-import 'package:poc_fo/blocs/bloc/temperature/temperature_state.dart';
+import 'package:poc_fo/blocs/temperature/temperature_event.dart';
+import 'package:poc_fo/blocs/temperature/temperature_state.dart';
 import 'package:poc_fo/models/models.dart';
 import 'package:poc_fo/repositories/repositories.dart';
 
