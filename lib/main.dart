@@ -21,6 +21,11 @@ import 'package:meta/meta.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:poc_fo/blocs/blocs.dart';
+import 'package:poc_fo/repositories/repositories.dart';
+import 'package:poc_fo/views/display_co2.dart';
+import 'utils/bloc_observer.dart';
 void main() {
   Bloc.observer = SimpleBlocObserver();
 
@@ -32,13 +37,15 @@ void main() {
 
   runApp(MyApp(temperatureRepository: temperatureRepository));
 }
-
 class MyApp extends StatelessWidget {
 
   final TemperatureRepository temperatureRepository;
 
   const MyApp({Key key, this.temperatureRepository})
       : assert(temperatureRepository != null),
+  final Co2Repository repository;
+  MyApp({Key key, @required this.repository})
+      : assert(repository != null),
         super(key: key);
 
   // This widget is the root of your application.
@@ -62,5 +69,14 @@ class MyApp extends StatelessWidget {
           create: (context) => Co2Bloc(co2Repository: repository),
           child: ShowPatient()),
     );
+        title: 'POC DEMO',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MultiBlocProvider(providers: [
+          BlocProvider<Co2Bloc>(
+            create: (context) => Co2Bloc(co2Repository: repository),
+          )
+        ], child: ShowPatient()));
   }
 }
