@@ -17,7 +17,76 @@ class ShowPatient extends StatelessWidget {
                   .add(FetchPatient(id: 500017));
             }
             if (state is PatientLoadSuccess) {
-              return Text(state.patient.toJson().toString());
+              return new Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    new Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(state.patient.toJson().toString()),
+                    ),
+                    Center(
+                      child: new Container(
+                        child: new Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            new Container(
+                              padding: EdgeInsets.all(5),
+                              child: ElevatedButton(
+                                // Within the `FirstScreen` widget
+                                onPressed: () {
+                                  // Navigate to the second screen using a named route.
+                                  Navigator.pushNamed(context, '/co2');
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.grey),
+                                ),
+                                child: Text('Co2'),
+                              ),
+                            ),
+                            new Container(
+                              padding: EdgeInsets.all(5),
+                              child: ElevatedButton(
+                                // Within the `FirstScreen` widget
+                                onPressed: () {
+                                  // Navigate to the second screen using a named route.
+                                  Navigator.pushNamed(context, '/humidity');
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.blueGrey),
+                                ),
+                                child: Text('Humidité'),
+                              ),
+                            ),
+                            new Container(
+                              padding: EdgeInsets.all(5),
+                              child: ElevatedButton(
+                                // Within the `FirstScreen` widget
+                                onPressed: () {
+                                  // Navigate to the second screen using a named route.
+                                  Navigator.pushNamed(context, '/temperature');
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.teal[400]),
+                                ),
+                                child: Text('Température'),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
             }
             if (state is PatientLoadFailure) {
               return Text('Patient not loaded');
